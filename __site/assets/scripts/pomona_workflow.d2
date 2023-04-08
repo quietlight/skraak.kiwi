@@ -1,0 +1,46 @@
+Collect: {
+	c_record: Record 9pm to 6am in Summer\nor 6pm to 7am in Winter
+	c_collect: Collect SD cards\nevery 40 to 60 days
+	c_transfer: Transfer SD cards\nto hard drive library\n and back up
+	c_metadata: File metadata including temperature\nand UTC time is written to a\nDuckDB database table
+	
+	c_record -> c_collect -> c_transfer -> c_metadata
+	}
+
+Find: {
+	f_classify: Run binary classifier over\naudio data to identify kiwi
+	f_segment: Segment detections, sunrise to\nsunset, make spectrogram images\nand audio files
+	
+	f_classify -> f_segment
+	}
+
+
+Sort: {
+	s_classify1: A secondary model sorts detections\ninto male calls, female calls, duets\nand false positives
+	s_review: Classifications are manually reviewed
+	s_classify2: Kiwi calls are then auto classified\ninto 3 volume/distance classes and\n4 noise classes
+	s_metadata: Segment and label metadata is\nwritten to a DuckDB database table
+
+	s_classify1 -> s_review -> s_classify2 -> s_metadata
+	}
+
+Analyse: {
+	a_analyse: Data analysed\nusing SQL queries\nand Julia DataFrames
+	a_story: Understand Pomona Kiwi life
+
+	a_analyse -> a_story
+	}
+
+Share: {
+	s_skraak: Publish to skraak.kiwi
+	s_question: Answer human questions
+
+	s_skraak -> s_question
+	}	
+
+
+
+Collect -> Find -> Sort -> Analyse -> Share
+
+
+

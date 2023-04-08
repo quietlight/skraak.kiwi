@@ -1,0 +1,9 @@
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+DuckDB = "d2f5444f-75bc-4fdf-ac35-56f514c445e1"
+Franklin = "713c75ef-9fc9-4b05-94a9-213340da978e"
+JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
+NodeJS = "2bd173c7-0d6d-553b-b6af-13a54713934c"
+TimeZones = "f269a46b-ccf7-5d73-abea-4c690281aa53"
+VegaDatasets = "0ae4a718-28b7-58ec-9efb-cded64d6d5b4"
+VegaLite = "112f6efa-9a02-5b7d-90c0-432ed331239a"
