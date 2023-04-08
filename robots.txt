@@ -1,4 +1,0 @@
-Sitemap: https://skraak.kiwi/sitemap.xml
-
-User-agent: *
-Disallow:
