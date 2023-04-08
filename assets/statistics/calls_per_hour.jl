@@ -6,7 +6,10 @@ function get_calls_per_hour()
   con = DBInterface.connect(DuckDB.DB, "/Volumes/USB/AudioData.db")
   a=DBInterface.execute(con, "
   SELECT
-    SUM(CAST(l.male AS INT)) + SUM(CAST(l.female AS INT)) + SUM(CAST(l.duet AS INT)) + SUM(CAST(l.duet AS INT)) AS Individual,
+    SUM(CAST(l.male AS INT)) + SUM(CAST(l.female AS INT)) + SUM(CAST(l.duet AS INT)) + SUM(CAST(l.duet AS INT)) AS calls,
+    SUM(CAST(l.male AS INT)) + SUM(CAST(l.duet AS INT)) AS male,
+    SUM(CAST(l.female AS INT)) + SUM(CAST(l.duet AS INT)) AS female,
+    SUM(CAST(l.duet AS INT)) AS duet,
     time_bucket(INTERVAL '60 minutes', f.local_date_time) AS bucket
   FROM
     pomona_labels_current AS l
@@ -30,12 +33,11 @@ df=get_calls_per_hour()
 # Aggregate
 df1=DataFrame(df)
 
-println("Mean: ", round(mean(df1.Individual), digits=2))
+println("Mean: ", round(mean(df1.calls), digits=2), " calls per hour")
 
-rename!(df1, Dict(:bucket => "hour_bucket", :Individual => "calls"))
+rename!(df1, Dict(:bucket => "hour_bucket"))
 description=describe(df1)[:,1:5]
-description[2,2]=0
-CSV.write("./_assets/statistics/tableinput/calls_per_hour_description.csv", description)
+something.(description, missing) |> CSV.write("./_assets/statistics/tableinput/calls_per_hour_description.csv")
 
 W = df1 |>
   @vlplot(
@@ -66,14 +68,18 @@ save("./_assets/statistics/calls_per_hour_frequency.png", V)
 df2=DataFrame(df)
 df2.bucket = map(x -> hour(x), df2.bucket)
 df2=groupby(df2, :bucket)
-df2=combine(df2, :Individual => mean)
-rename!(df2, Dict(:bucket => "hour_bucket", :Individual_mean => "mean_calls"))
+df2=combine(df2, :calls => mean, :male => mean, :female => mean, :duet => mean)
+rename!(df2, Dict(:bucket => "hour_bucket"))
 CSV.write("./_assets/statistics/tableinput/calls_per_hour.csv", df2)
-X = df2 |>
+m=DataFrame(hour_bucket=df2.hour_bucket, mean=df2.male_mean, type="male")
+f=DataFrame(hour_bucket=df2.hour_bucket, mean=df2.female_mean, type="female")
+g1=vcat(m, f)
+X = g1 |>
   @vlplot(
     :bar,
     x=:hour_bucket,
-    y=:mean_calls,
+    y=:mean,
+    color=:type,
     width=400,
     height=400
   )
@@ -83,14 +89,18 @@ save("./_assets/statistics/calls_per_hour.png", X)
 df3=DataFrame(df)
 df3.bucket = map(x -> month(x), df3.bucket)
 df3=groupby(df3, :bucket)
-df3=combine(df3, :Individual => mean)
-rename!(df3, Dict(:bucket => "month", :Individual_mean => "mean_calls_per_hour"))
+df3=combine(df3, :calls => mean, :male => mean, :female => mean, :duet => mean)
+rename!(df3, Dict(:bucket => "month"))
 CSV.write("./_assets/statistics/tableinput/calls_per_hour_by_month.csv", df3)
-Y = df3 |>
+m1=DataFrame(month=df3.month, mean=df3.male_mean, type="male")
+f1=DataFrame(month=df3.month, mean=df3.female_mean, type="female")
+g2=vcat(m1, f1)
+Y = g2 |>
   @vlplot(
       :bar,
       x=:month,
-      y=:mean_calls_per_hour,
+      y=:mean,
+      color=:type,
       width=400,
       height=400
   )
