@@ -3,25 +3,24 @@
 using CSV, DataFrames, DuckDB, Dates, Statistics, VegaLite
 
 function get_calls_per_hour()
-  con = DBInterface.connect(DuckDB.DB, "/Volumes/USB/AudioData.db")
+  con = DBInterface.connect(DuckDB.DB, "/Volumes/SSD1/AudioData.duckdb")
   a=DBInterface.execute(con, "
   SELECT
-    SUM(CAST(l.male AS INT)) + SUM(CAST(l.female AS INT)) + SUM(CAST(l.duet AS INT)) + SUM(CAST(l.duet AS INT)) AS calls,
-    SUM(CAST(l.male AS INT)) + SUM(CAST(l.duet AS INT)) AS male,
-    SUM(CAST(l.female AS INT)) + SUM(CAST(l.duet AS INT)) AS female,
-    SUM(CAST(l.duet AS INT)) AS duet,
-    time_bucket(INTERVAL '60 minutes', f.local_date_time) AS bucket
+    COALESCE(SUM(CAST(l.male AS INT)) + SUM(CAST(l.female AS INT)) + SUM(CAST(l.duet AS INT)) + SUM(CAST(l.duet AS INT)), 0) AS calls,
+    COALESCE(SUM(CAST(l.male AS INT)) + SUM(CAST(l.duet AS INT)), 0) AS male,
+    COALESCE(SUM(CAST(l.female AS INT)) + SUM(CAST(l.duet AS INT)), 0) AS female,
+    COALESCE(SUM(CAST(l.duet AS INT)), 0) AS duet,
+    time_bucket(INTERVAL '60 minutes', f.local_date_time) AS bucket,
   FROM
-    pomona_labels_current AS l
-  INNER JOIN
-    pomona_files AS f
+    pomona_labels_20230418 AS l
+  RIGHT OUTER JOIN
+    (SELECT * FROM pomona_files WHERE night=true) AS f
   ON
     l.location = f.location AND l.file = f.file
-
   GROUP BY
     bucket
   ORDER BY
-    bucket;  
+    bucket; 
   ")
   DBInterface.close!(con)
   

@@ -9,7 +9,7 @@ pomona_polygon = read("./_assets/pomona_polygon.json", String) |> JSON3.read
 VV = VegaDatasets.VegaJSONDataset(pomona_polygon,"pomona_polygon.json")
 
 function get_loc_list()
-  con = DBInterface.connect(DuckDB.DB, "/Volumes/USB/AudioData.db")
+  con = DBInterface.connect(DuckDB.DB, "/Volumes/SSD1/AudioData.duckdb")
   a=DBInterface.execute(con, "
     SELECT location, 
       AVG(latitude) AS lat, 

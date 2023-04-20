@@ -9,7 +9,7 @@ pomona_polygon = read("./_assets/pomona_polygon.json", String) |> JSON3.read
 VV = VegaDatasets.VegaJSONDataset(pomona_polygon,"pomona_polygon.json")
 
 function get_loc_list(l::Vector{String})::Vector{NamedTuple{(:latitude, :longitude, :name), Tuple{Float64, Float64, String}}}
-  con = DBInterface.connect(DuckDB.DB, "/Volumes/USB/AudioData.db")
+  con = DBInterface.connect(DuckDB.DB, "/Volumes/SSD1/AudioData.duckdb")
   a=DBInterface.execute(con, "
     SELECT location, 
       AVG(latitude) AS lat, 
@@ -30,12 +30,11 @@ function get_loc_list(l::Vector{String})::Vector{NamedTuple{(:latitude, :longitu
 end
 
 # List of locations, known by db already.
-moths=get_loc_list(["C05", "CB11", "D09", "F05", "F09", "G05", "H04", "M04", "N20", "NB14", "D05", "K09", "KS06", "N14", "NB5T", "S13T", "V05"])
+moths=get_loc_list(["C05", "D03", "D09", "F09", "G05", "H04", "M04", "N14", "N20", "NB14"])
 
 # The db only knows location of already used spots, add new locations manually.
-new_moths=[
-  (latitude=-45.50075, longitude=167.48065, name="N10M")
-  ]
+# new_moths=[(latitude=-45.50075, longitude=167.48065, name="N10M")]
+
 
 X=@vlplot(width=455, height=500) +
 @vlplot(
@@ -58,7 +57,9 @@ X=@vlplot(width=455, height=500) +
     latitude="latitude:q",
     size={value=100},
     color={value=:brown}
-)+
+)
+#=
++
 @vlplot(
     :circle,
     data=new_moths,
@@ -67,10 +68,12 @@ X=@vlplot(width=455, height=500) +
     size={value=100},
     color={value=:brown}
 )
+=#
 
 #save("current_locations.png", X)
 save(joinpath(@OUTPUT, "current_locations.png"), X)
 
-for item in vcat(moths, new_moths)
+#for item in vcat(moths, new_moths)
+for item in vcat(moths)
   print("$(item.name)  ")
 end

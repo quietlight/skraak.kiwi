@@ -3,7 +3,7 @@
 using CSV, DataFrames, DuckDB
 
 function get_calls_by_location()
-  con = DBInterface.connect(DuckDB.DB, "/Volumes/USB/AudioData.db")
+  con = DBInterface.connect(DuckDB.DB, "/Volumes/SSD1/AudioData.duckdb")
   a=DBInterface.execute(con, "
     SELECT location AS Location, 
       SUM(CAST(male AS INT)) AS Solo_Male, 
@@ -13,7 +13,7 @@ function get_calls_by_location()
       SUM(CAST(not_kiwi AS INT)) AS False_Positives, 
       SUM(CAST(close_call AS INT)) AS Close,
       SUM(CAST(low_noise AS INT)) AS Low_Noise
-      FROM pomona_labels_current
+      FROM pomona_labels_20230418
       GROUP BY location;  
   ")
   DBInterface.close!(con)
