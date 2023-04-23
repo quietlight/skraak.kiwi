@@ -51,11 +51,13 @@ function get_location_calls_per_hour(loc::String)
   cdf = combine(gdf, :male => sum, :female => sum, :duet => sum)
   @transform!(cdf, @byrow :male = :male_sum + :duet_sum)
   @transform!(cdf, @byrow :female = :female_sum + :duet_sum)
-  select!(cdf, Not([:male_sum, :female_sum, :duet_sum]))
+  rename!(cdf, :duet_sum => :duet)
+  select!(cdf, Not([:male_sum, :female_sum]))
   # there is a lot of data here for further analysis, for now mean calls only.
   mm=round(mean(cdf.male); digits=4)
   fm=round(mean(cdf.female); digits=4)
-  row = [loc, mm, fm]
+  dm=round(mean(cdf.duet); digits=4)
+  row = [loc, mm, fm, dm]
   return row
 end
 
@@ -83,17 +85,25 @@ function graph_data()
   df = DataFrame(
     location = String[],
     male = Float64[],
-    female = Float64[]
+    female = Float64[],
+    duet = Float64[]
   )
 
   for location in get_location_list()
     x=get_location_calls_per_hour(location)
     push!(df, x)
   end
-  CSV.write("./_assets/statistics/tableinput/calls_per_hour_by_location.csv", df)
+  @transform!(df, @byrow :individual = (:male + :female) |> x -> round(x, digits=4))
   m=DataFrame(location=df.location, mean_calls_per_hour=df.male, type="male")
   f=DataFrame(location=df.location, mean_calls_per_hour=df.female, type="female")
   dfx=vcat(m, f)
+  println("Mean calls per hour by location: $(df.individual |> mean |> x -> round(x, digits=4))")
+
+  #for table
+  sort!(df, [:individual], rev=true)
+  push!(df, ["TOTAL", df.male |> mean |> x -> round(x, digits=4), df.female |> mean |> x -> round(x, digits=4), df.duet |> mean |> x -> round(x, digits=4), df.individual |> mean |> x -> round(x, digits=4)])
+  CSV.write("./_assets/statistics/tableinput/calls_per_hour_by_location.csv", df)
+  
   return dfx
 end
 
