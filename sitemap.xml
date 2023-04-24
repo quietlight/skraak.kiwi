@@ -2,7 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-    <loc>https://skraak.kiwi/statistics/weather/index.html</loc>
+    <loc>https://skraak.kiwi/statistics/location/index.html</loc>
+    <lastmod>2023-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/statistics/aggregate/index.html</loc>
     <lastmod>2023-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -14,8 +20,20 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>https://skraak.kiwi/statistics/weather/index.html</loc>
+    <lastmod>2023-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>https://skraak.kiwi/404/index.html</loc>
     <lastmod>2023-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/statistics/when/index.html</loc>
+    <lastmod>2023-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -38,18 +56,6 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://skraak.kiwi/statistics/aggregate_calls_per_hour/index.html</loc>
-    <lastmod>2023-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/statistics/calls_per_hour_by_location/index.html</loc>
-    <lastmod>2023-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
     <loc>https://skraak.kiwi/statistics/overview/index.html</loc>
     <lastmod>2023-04-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -58,12 +64,6 @@
 <url>
     <loc>https://skraak.kiwi/statistics/old-page/</loc>
     <lastmod>2022-12-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/statistics/._old-page</loc>
-    <lastmod>2023-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
