@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+  <link rel="stylesheet" href="/css/basic.css">
+  <link rel="icon" href="/assets/favicon.ico">
+   <title>Aggregate Calls per Hour</title>  
+  <script defer data-domain="skraak.kiwi" src="https://plausible.io/js/plausible.js"></script>
+</head>
+<body>
+  <header>
+<div class="blog-name"><a href="/">skraak.kiwi</a></div>
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/faq">FAQ</a></li>
+    <li><a href="/statistics">Statistics</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <img src="/assets/hamburger.svg" id="menu-icon">
+</nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="aggregate_calls_per_hour"><a href="#aggregate_calls_per_hour" class="header-anchor">Aggregate Calls per Hour</a></h1>
+<div class="franklin-toc"><ol><li><a href="#aggregate_calls_per_hour">Aggregate Calls per Hour</a><ol><li><a href="#dataset">Dataset</a></li><li><a href="#distribution">Distribution</a></li><li><a href="#by_time_of_day">By Time of Day</a></li><li><a href="#by_month">By Month</a></li></ol></li><li><a href="#next">Next</a></li></ol></div>
+
+<h2 id="dataset"><a href="#dataset" class="header-anchor">Dataset</a></h2>
+<pre><code class="plaintext code-output">Mean: 4.81 calls per hour
+</code></pre>
+<p><img src="/assets/statistics/calls_per_hour_aggregate.png" alt="Calls per Hour" /></p>
+<table><tr><th align="right">variable</th><th align="right">mean</th><th align="right">min</th><th align="right">median</th><th align="right">max</th></tr><tr><td align="right">calls</td><td align="right">4.812664907651715</td><td align="right">0</td><td align="right">4.0</td><td align="right">29</td></tr><tr><td align="right">male</td><td align="right">3.724172924700629</td><td align="right">0</td><td align="right">3.0</td><td align="right">22</td></tr><tr><td align="right">female</td><td align="right">1.088491982951086</td><td align="right">0</td><td align="right">1.0</td><td align="right">12</td></tr><tr><td align="right">duet</td><td align="right">0.49015628171300996</td><td align="right">0</td><td align="right">0.0</td><td align="right">9</td></tr><tr><td align="right">hour_bucket</td><td align="right"></td><td align="right">2021-10-28T07:00:00.0</td><td align="right">2022-07-25T15:00:00.0</td><td align="right">2023-04-14T16:00:00.0</td></tr></table>
+
+<h2 id="distribution"><a href="#distribution" class="header-anchor">Distribution</a></h2>
+<p><img src="/assets/statistics/calls_per_hour_frequency.png" alt="Calls per Hour" /></p>
+<h2 id="by_time_of_day"><a href="#by_time_of_day" class="header-anchor">By Time of Day</a></h2>
+<p>Hour is UTC, to get to NZ time add 12 or 13 hours. I need to work in UTC because turning the clock back in April causes havoc with my statistics.</p>
+<p><img src="/assets/statistics/calls_per_hour.png" alt="Calls per Hour" /></p>
+<h2 id="by_month"><a href="#by_month" class="header-anchor">By Month</a></h2>
+<p><img src="/assets/statistics/calls_per_hour_by_month.png" alt="Calls per Hour" /></p>
+<h1 id="next"><a href="#next" class="header-anchor">Next</a></h1>
+<ul>
+<li><p><a href="/statistics/calls_per_hour_by_location">Calls per Hour by Location</a></p>
+</li>
+<li><p><a href="/statistics/weather">Weather</a></p>
+</li>
+</ul>
+<ul>
+<li><p><a href="https://podcasters.spotify.com/pod/show/david-cary">Kiwi Radio</a> &#40;Spotify&#41;</p>
+</li>
+</ul>
+<div class="page-foot">
+    <p><a href="https://www.buymeacoffee.com/skraak">buymeacoffee.com</a></br>
+    Subscribe to the <a href="https://tinyletter.com/fiordlandpacks">Pomona Kiwi Newsletter</a></br>
+    Thanks to the <a  href="https://pomona-island.org.nz">Pomona Island Charitable Trust</a></br>
+    Supported by <a  href="https://fiordlandpacks.nz">Fiordland Packs</a></p>
+        
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> <a href="https://davidcary.nz">David Cary</a>. Last modified: April 24, 2023.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>
