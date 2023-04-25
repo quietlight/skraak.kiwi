@@ -99,7 +99,7 @@ function graph_data()
   #for table
   sort!(df, [:individual], rev=true)
   push!(df, ["TOTAL", df.male |> mean |> x -> round(x, digits=4), df.female |> mean |> x -> round(x, digits=4), df.duet |> mean |> x -> round(x, digits=4), df.individual |> mean |> x -> round(x, digits=4)])
-  CSV.write("./_assets/statistics/tableinput/calls_per_hour_by_location.csv", df)
+  CSV.write("./_assets/statistics/tableinput/secretary_island_calls_per_hour_by_location.csv", df)
   
   return dfx
 end
