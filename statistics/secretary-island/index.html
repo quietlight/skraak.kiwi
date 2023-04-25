@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+  <link rel="stylesheet" href="/css/basic.css">
+  <link rel="icon" href="/assets/favicon.ico">
+   <title>Secretary Island</title>  
+  <script defer data-domain="skraak.kiwi" src="https://plausible.io/js/plausible.js"></script>
+</head>
+<body>
+  <header>
+<div class="blog-name"><a href="/">skraak.kiwi</a></div>
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/faq">FAQ</a></li>
+    <li><a href="/statistics">Statistics</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <img src="/assets/hamburger.svg" id="menu-icon">
+</nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="secretary_island"><a href="#secretary_island" class="header-anchor">Secretary Island</a></h1>
+<div class="franklin-toc"><ol><li><a href="#secretary_island">Secretary Island</a><ol><li><a href="#kiwi_calls">Kiwi Calls</a></li><li><a href="#calls_by_location">Calls by Location</a></li><li><a href="#dataset">Dataset</a></li><li><a href="#distribution">Distribution</a></li><li><a href="#time_of_day">Time of Day</a></li><li><a href="#month">Month</a></li><li><a href="#calls_per_hour_by_location">Calls per Hour by Location</a></li></ol></li></ol></div>
+<h2 id="kiwi_calls"><a href="#kiwi_calls" class="header-anchor">Kiwi Calls</a></h2>
+
+
+<table><tr><th align="right">Call Type</th><th align="right">Number</th></tr><tr><td align="right">Solo Male</td><td align="right">1320</td></tr><tr><td align="right">Solo Female</td><td align="right">59</td></tr><tr><td align="right">Duets</td><td align="right">174</td></tr><tr><td align="right">Individual</td><td align="right">1727</td></tr></table>
+
+<h2 id="calls_by_location"><a href="#calls_by_location" class="header-anchor">Calls by Location</a></h2>
+
+
+<table><tr><th align="right">Location</th><th align="right">Solo_Male</th><th align="right">Solo_Female</th><th align="right">Duets</th><th align="right">Individual</th><th align="right">False_Positives</th><th align="right">Close</th><th align="right">Low_Noise</th></tr><tr><td align="right">Lake_Sec</td><td align="right">529</td><td align="right">16</td><td align="right">28</td><td align="right">601</td><td align="right">162</td><td align="right">20</td><td align="right">157</td></tr><tr><td align="right">Crossroad</td><td align="right">403</td><td align="right">22</td><td align="right">59</td><td align="right">543</td><td align="right">218</td><td align="right">38</td><td align="right">195</td></tr><tr><td align="right">Grono</td><td align="right">269</td><td align="right">13</td><td align="right">74</td><td align="right">430</td><td align="right">29</td><td align="right">84</td><td align="right">234</td></tr><tr><td align="right">Marley</td><td align="right">110</td><td align="right">7</td><td align="right">13</td><td align="right">143</td><td align="right">139</td><td align="right">4</td><td align="right">59</td></tr><tr><td align="right">North_R</td><td align="right">9</td><td align="right">0</td><td align="right">0</td><td align="right">9</td><td align="right">101</td><td align="right">0</td><td align="right">3</td></tr><tr><td align="right">Mahoe</td><td align="right">0</td><td align="right">1</td><td align="right">0</td><td align="right">1</td><td align="right">10</td><td align="right">0</td><td align="right">0</td></tr><tr><td align="right">Astelia</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">6</td><td align="right"></td><td align="right"></td></tr><tr><td align="right">TOTAL</td><td align="right">1320</td><td align="right">59</td><td align="right">174</td><td align="right">1727</td><td align="right">665</td><td align="right">146</td><td align="right">648</td></tr></table>
+
+
+<h2 id="dataset"><a href="#dataset" class="header-anchor">Dataset</a></h2>
+<pre><code class="plaintext code-output">Mean: 4.3 calls per hour
+</code></pre>
+<p><img src="/assets/statistics/secretary_island_calls_per_hour_aggregate.png" alt="Calls per Hour" /></p>
+<table><tr><th align="right">variable</th><th align="right">mean</th><th align="right">min</th><th align="right">median</th><th align="right">max</th></tr><tr><td align="right">calls</td><td align="right">4.296019900497512</td><td align="right">0</td><td align="right">3.0</td><td align="right">24</td></tr><tr><td align="right">male</td><td align="right">3.716417910447761</td><td align="right">0</td><td align="right">3.0</td><td align="right">18</td></tr><tr><td align="right">female</td><td align="right">0.5796019900497512</td><td align="right">0</td><td align="right">0.0</td><td align="right">6</td></tr><tr><td align="right">duet</td><td align="right">0.43283582089552236</td><td align="right">0</td><td align="right">0.0</td><td align="right">5</td></tr><tr><td align="right">hour_bucket</td><td align="right"></td><td align="right">2018-03-08T10:00:00.0</td><td align="right">2019-04-13T09:30:00.0</td><td align="right">2020-04-19T10:00:00.0</td></tr></table>
+
+<h2 id="distribution"><a href="#distribution" class="header-anchor">Distribution</a></h2>
+<p><img src="/assets/statistics/secretary_island_calls_per_hour_frequency.png" alt="Calls per Hour" /></p>
+<h2 id="time_of_day"><a href="#time_of_day" class="header-anchor">Time of Day</a></h2>
+<p>Hour is UTC, to get to NZ time add 12 or 13 hours. I need to work in UTC because turning the clock back in April causes havoc with my statistics.</p>
+<p><img src="/assets/statistics/secretary_island_calls_per_hour.png" alt="Calls per Hour" /></p>
+<h2 id="month"><a href="#month" class="header-anchor">Month</a></h2>
+<p>All calls were recorded in April 2018, 2019 or 2020.</p>
+
+<h2 id="calls_per_hour_by_location"><a href="#calls_per_hour_by_location" class="header-anchor">Calls per Hour by Location</a></h2>
+<pre><code class="plaintext code-output">Mean calls per hour by location: 1.2977
+</code></pre>
+<p><img src="/assets/statistics/secretary_island_calls_per_hour_by_location.png" alt="Calls per Hour" /></p>
+<div class="page-foot">
+    <p><a href="https://www.buymeacoffee.com/skraak">buymeacoffee.com</a></br>
+    Subscribe to the <a href="https://tinyletter.com/fiordlandpacks">Pomona Kiwi Newsletter</a></br>
+    Thanks to the <a  href="https://pomona-island.org.nz">Pomona Island Charitable Trust</a></br>
+    Supported by <a  href="https://fiordlandpacks.nz">Fiordland Packs</a></p>
+        
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> <a href="https://davidcary.nz">David Cary</a>. Last modified: April 25, 2023.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>
