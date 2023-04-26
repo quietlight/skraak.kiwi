@@ -97,19 +97,24 @@ function moon_data()
   cdf = combine(gdf, :duet => mean, :male => mean, :female => mean)
   moon = DataFrame(CSV.File("/Volumes/SSD1/moon_phases.csv"))
   j = innerjoin(cdf, moon, on = :date_utc)
-  select!(j, :male_mean => :male, :female_mean => :female, :moon_phase)
+  select!(j, :male_mean => :male, :female_mean => :female, :moon_phase, :duet_mean => :duet)
   gdj = groupby(j, :moon_phase)
   cdj = combine(gdj, :male => mean, :female => mean)
 
   m=DataFrame(moon_phase=cdj.moon_phase, calls_per_hour=cdj.male_mean, type="male")
   f=DataFrame(moon_phase=cdj.moon_phase, calls_per_hour=cdj.female_mean, type="female")
   g1=vcat(m, f)
+
+  j2 = filter(row -> row.duet > 0, j)
+  gdj2 = groupby(j2, :moon_phase)
+  cdj2 = combine(gdj, :duet => mean)
+  g2=DataFrame(moon_phase=cdj2.moon_phase, calls_per_hour=cdj2.duet_mean, type="duet")
   
-  return g1
+  return g1, g2
 end
 
 
-df=moon_data()
+df, duets=moon_data()
 X = df |>
   @vlplot(
     :bar,
@@ -122,3 +127,16 @@ X = df |>
 
   
 save("./_assets/statistics/calls_per_hour_by_moon_phase.png", X)
+
+Y = duets |>
+  @vlplot(
+    :bar,
+    x=:moon_phase,
+    y=:calls_per_hour,
+    color=:type,
+    width=400,
+    height=400,
+  )
+
+  
+save("./_assets/statistics/calls_per_hour_by_moon_phase_duets.png", Y)
