@@ -14,7 +14,6 @@ function get_calls_with_location(loc::String)
     pomona_labels_20230418
   WHERE
     location = '$loc';
-  
   ")
   DBInterface.close!(con) 
   a=DataFrame(a) 

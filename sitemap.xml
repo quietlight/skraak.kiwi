@@ -3,7 +3,7 @@
 
 <url>
     <loc>https://skraak.kiwi/statistics/location/index.html</loc>
-    <lastmod>2023-05-05</lastmod>
+    <lastmod>2023-06-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -27,25 +27,19 @@
 </url>
 <url>
     <loc>https://skraak.kiwi/faq/index.html</loc>
-    <lastmod>2023-04-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/404/index.html</loc>
-    <lastmod>2023-04-01</lastmod>
+    <lastmod>2023-05-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://skraak.kiwi/index.html</loc>
-    <lastmod>2023-04-27</lastmod>
+    <lastmod>2023-06-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://skraak.kiwi/statistics/overview/index.html</loc>
-    <lastmod>2023-05-05</lastmod>
+    <lastmod>2023-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -57,7 +51,7 @@
 </url>
 <url>
     <loc>https://skraak.kiwi/statistics/aggregate/index.html</loc>
-    <lastmod>2023-05-05</lastmod>
+    <lastmod>2023-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -75,7 +69,7 @@
 </url>
 <url>
     <loc>https://skraak.kiwi/statistics/rats/index.html</loc>
-    <lastmod>2023-05-05</lastmod>
+    <lastmod>2023-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>

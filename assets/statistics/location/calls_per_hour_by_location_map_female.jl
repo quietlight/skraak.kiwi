@@ -1,6 +1,6 @@
 # This file was generated, do not modify it. # hide
 #hideall
-using DataFrames, DuckDB, JSON3, VegaLite, VegaDatasets
+using CSV, DataFrames, DataFramesMeta, DuckDB, JSON3, Statistics, VegaLite, VegaDatasets
 pomona_polygon = read("./_assets/pomona_polygon.json", String) |> JSON3.read
 VV = VegaDatasets.VegaJSONDataset(pomona_polygon,"pomona_polygon.json")
 

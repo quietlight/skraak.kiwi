@@ -1,1 +1,2 @@
 Mean: 4.81 calls per hour
+ArgumentError: column name :bucket not found in the data frame
