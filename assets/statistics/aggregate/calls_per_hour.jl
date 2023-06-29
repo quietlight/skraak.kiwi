@@ -2,6 +2,7 @@
 #hideall
 using CSV, DataFrames, DuckDB, Dates, Statistics, VegaLite
 
+
 function get_calls_per_hour()
   con = DBInterface.connect(DuckDB.DB, "/Volumes/SSD1/AudioData.duckdb")
   a=DBInterface.execute(con, "
@@ -27,10 +28,10 @@ function get_calls_per_hour()
   return a
 end
 
-df=get_calls_per_hour()
+df=get_calls_per_hour() |> DataFrame
 
 # Aggregate
-df1=DataFrame(df)
+df1=copy(df)
 
 println("Mean: ", round(mean(df1.calls), digits=2), " calls per hour")
 
@@ -64,7 +65,7 @@ V = df1 |>
 save("./_assets/statistics/calls_per_hour_frequency.png", V)
 
 # By Hour
-df2=DataFrame(df)
+df2=copy(df)
 df2.bucket = map(x -> hour(x), df2.bucket)
 df2=groupby(df2, :bucket)
 df2=combine(df2, :calls => mean, :male => mean, :female => mean, :duet => mean)
@@ -85,7 +86,7 @@ X = g1 |>
 save("./_assets/statistics/calls_per_hour.png", X)  
 
 # By Month
-df3=DataFrame(df)
+df3=copy(df)
 df3.bucket = map(x -> month(x), df3.bucket)
 df3=groupby(df3, :bucket)
 df3=combine(df3, :calls => mean, :male => mean, :female => mean, :duet => mean)
