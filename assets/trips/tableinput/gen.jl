@@ -1,6 +1,6 @@
 # This file was generated, do not modify it. # hide
 #hideall
-using CSV, DataFrames, DataFramesMeta, DuckDB, Dates, Statistics, VegaLite
+using CSV, DataFrames, DataFramesMeta, DuckDB, Dates, Statistics
 
 function get_trip_dates()
   con = DBInterface.connect(DuckDB.DB, "/Volumes/SSD1/AudioData.duckdb")
