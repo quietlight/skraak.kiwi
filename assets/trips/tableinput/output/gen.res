@@ -1,1 +1,1 @@
-nothing
+"./_assets/trips/tableinput/summary_individual_cph.csv"

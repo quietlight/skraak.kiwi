@@ -51,45 +51,6 @@ for tdate in get_trip_dates()
 	CSV.write("./_assets/trips/tableinput/$tdate.csv", dfx)
 end
 
-#=
-function trip_calls_per_hour(td::Dates.Date)
-  con = DBInterface.connect(DuckDB.DB, "/Volumes/SSD1/AudioData.duckdb")
-  a=DBInterface.execute(con, "
-  SELECT
-    COALESCE(SUM(CAST(l.male AS INT)) + SUM(CAST(l.female AS INT)) + SUM(CAST(l.duet AS INT)) + SUM(CAST(l.duet AS INT)), 0) AS calls,
-    COALESCE(SUM(CAST(l.male AS INT)) + SUM(CAST(l.duet AS INT)), 0) AS male,
-    COALESCE(SUM(CAST(l.female AS INT)) + SUM(CAST(l.duet AS INT)), 0) AS female,
-    COALESCE(SUM(CAST(l.duet AS INT)), 0) AS duet,
-    time_bucket(INTERVAL '60 minutes', f.local_date_time) AS bucket,
-  FROM (
-    SELECT m.*, n.file, n.location, n.trip_date
-    FROM pomona_labels_20230418 m
-    LEFT JOIN pomona_files n
-    ON m.file = n.file AND m.location = n.location
-    WHERE n.trip_date = (DATE '$td')
-        ) AS l
-  RIGHT OUTER JOIN
-    (SELECT * FROM pomona_files WHERE night=true AND trip_date = (DATE '$td')) AS f
-  ON
-    l.location = f.location AND l.file = f.file
-  GROUP BY
-    bucket
-  ORDER BY
-    bucket; 
-  ")
-  DBInterface.close!(con)
-  df=DataFrame(a)
-  rename!(df, Dict(:bucket => "hour_bucket"))
-  description=describe(df)[:,1:5]
-
-end
-
-for tdate in get_trip_dates()
-  cph = trip_calls_per_hour(tdate)
-  something.(cph, missing) |> CSV.write("./_assets/trips/tableinput/$(tdate)-cph.csv")  
-end
-=#
-
 function get_calls_with_location_trip_date(loc::String, td::Dates.Date)
   con = DBInterface.connect(DuckDB.DB, "/Volumes/SSD1/AudioData.duckdb")
   a=DBInterface.execute(con, "
@@ -100,14 +61,14 @@ function get_calls_with_location_trip_date(loc::String, td::Dates.Date)
     COALESCE(CAST(duet AS INT), 0) AS duet,
   FROM
     (
-        SELECT l.*, f.file, f.location, f.trip_date
-    FROM pomona_labels_20230418 l
-    LEFT JOIN pomona_files f
-    ON l.file = f.file AND l.location = f.location
-    WHERE f.trip_date = (DATE '$td')
-        )
+      	SELECT m.*, n.file, n.location, n.trip_date
+		FROM pomona_labels_20230418 m
+		LEFT JOIN pomona_files n
+		ON m.file = n.file AND m.location = n.location
+		WHERE n.trip_date = (DATE '$td')
+      	)
   WHERE
-    location = '$loc' AND trip_date = (DATE '$td');
+    location = '$loc';
   ")
   DBInterface.close!(con) 
   a=DataFrame(a) 
@@ -124,8 +85,7 @@ function get_files_with_location_trip_date(loc::String, td::Dates.Date)
   FROM
     pomona_files
   WHERE
-    location = '$loc' AND trip_date = (DATE '$td');
-  
+    location = '$loc' AND trip_date = (DATE '$td'); 
   ")
   DBInterface.close!(con) 
   a=DataFrame(a)
@@ -134,7 +94,7 @@ function get_files_with_location_trip_date(loc::String, td::Dates.Date)
   return b
 end
 
-function get_location_trip_date_calls_per_hour(loc::String, td::Dates.Date)
+function get_location_calls_per_hour(loc::String, td::Dates.Date)
   l=DataFrame(get_calls_with_location_trip_date("$loc", td))
   f=DataFrame(get_files_with_location_trip_date("$loc", td))
   df=outerjoin(f, l, on = :file)
@@ -154,7 +114,7 @@ function get_location_trip_date_calls_per_hour(loc::String, td::Dates.Date)
   return row
 end
 
-function get_location_list_for_trip_date(td::Dates.Date)
+function get_location_list(td::Dates.Date)
   con = DBInterface.connect(DuckDB.DB, "/Volumes/SSD1/AudioData.duckdb")
   a=DBInterface.execute(con, "
     SELECT
@@ -162,12 +122,12 @@ function get_location_list_for_trip_date(td::Dates.Date)
       SUM(CAST(l.male AS INT)) + SUM(CAST(l.female AS INT)) + SUM(CAST(l.duet AS INT)) + SUM(CAST(l.duet AS INT)) AS calls,
     FROM 
       (
-      SELECT m.*, n.file, n.location, n.trip_date
-      FROM pomona_labels_20230418 m
-      LEFT JOIN pomona_files n
-      ON m.file = n.file AND m.location = n.location
-      WHERE n.trip_date = (DATE '$td')
-        ) AS l
+      	SELECT m.*, n.file, n.location, n.trip_date
+		FROM pomona_labels_20230418 m
+		LEFT JOIN pomona_files n
+		ON m.file = n.file AND m.location = n.location
+		WHERE n.trip_date = (DATE '$td')
+      	) AS l
     WHERE 
       l.male = true OR l.female = true OR l.duet = true
     GROUP BY
@@ -180,26 +140,29 @@ function get_location_list_for_trip_date(td::Dates.Date)
   return a.locations
 end
 
-function trip_date_table(td::Dates.Date)
+sxdf = DataFrame(location = String[])
+for tdate in get_trip_dates()
   df = DataFrame(
     location = String[],
     male = Float64[],
     female = Float64[],
     duet = Float64[]
   )
-
-  for location in get_location_list_for_trip_date(td)
-    x=get_location_trip_date_calls_per_hour(location, td)
+  for location in get_location_list(tdate)
+  	x=get_location_calls_per_hour(location, tdate)
     push!(df, x)
   end
   @transform!(df, @byrow :individual = (:male + :female) |> x -> round(x, digits=4))
   sort!(df, [:individual], rev=true)
+  param=Dates.format(tdate, "yyyy-mm-dd")
+  local sdf = DataFrame(
+    "location" => copy(df.location),
+    param => copy(df.individual)
+    )
+  # needs to be here before the push to add total
+  global sxdf = outerjoin(sxdf, sdf, on = :location)
   push!(df, ["TOTAL", df.male |> mean |> x -> round(x, digits=4), df.female |> mean |> x -> round(x, digits=4), df.duet |> mean |> x -> round(x, digits=4), df.individual |> mean |> x -> round(x, digits=4)])
-  #CSV.write("./_assets/statistics/tableinput/calls_per_hour_by_location.csv", df)
-  return df
-end 
-
-for tdate in get_trip_dates()
-  cph = trip_date_table(tdate)
-  something.(cph, missing) |> CSV.write("./_assets/trips/tableinput/$(tdate)-cph.csv")  
+  CSV.write("./_assets/trips/tableinput/$(tdate)-cph.csv", df)
 end
+sort!(sxdf)
+something.(sxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_individual_cph.csv")
