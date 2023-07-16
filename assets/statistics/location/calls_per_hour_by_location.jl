@@ -116,4 +116,4 @@ X = df |>
     width=400,
     height=400,
   )
-save("./_assets/statistics/calls_per_hour_by_location.png", X)
+save("./_assets/statistics/calls_per_hour_by_location.svg", X)

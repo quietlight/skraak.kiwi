@@ -121,4 +121,4 @@ X = df |>
   )
 
   
-save("./_assets/statistics/calls_per_hour_by_temperature.png", X)
+save("./_assets/statistics/calls_per_hour_by_temperature.svg", X)

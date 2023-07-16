@@ -1,1 +1,1 @@
-"./_assets/trips/tableinput/summary_individual_cph.csv"
+"./_assets/trips/tableinput/summary_duets_cph.csv"

@@ -126,7 +126,7 @@ X = df |>
   )
 
   
-save("./_assets/statistics/calls_per_hour_by_moon_phase.png", X)
+save("./_assets/statistics/calls_per_hour_by_moon_phase.svg", X)
 
 Y = duets |>
   @vlplot(
@@ -139,4 +139,4 @@ Y = duets |>
   )
 
   
-save("./_assets/statistics/calls_per_hour_by_moon_phase_duets.png", Y)
+save("./_assets/statistics/calls_per_hour_by_moon_phase_duets.svg", Y)

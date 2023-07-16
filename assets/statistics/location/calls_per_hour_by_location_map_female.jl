@@ -84,4 +84,4 @@ X=@vlplot(width=455, height=500) +
     color={value=:blue}
 )
 
-save("./_assets/statistics/calls_per_hour_by_location_map_female.png", X)
+save("./_assets/statistics/calls_per_hour_by_location_map_female.svg", X)

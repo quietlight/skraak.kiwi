@@ -47,7 +47,7 @@ W = df1 |>
     width=400,
     height=400
   )
-save("./_assets/statistics/calls_per_hour_aggregate.png", W)
+save("./_assets/statistics/calls_per_hour_aggregate.svg", W)
 
 df1.hour_bucket=map(x -> 1, df1.hour_bucket)
 rename!(df1, Dict(:hour_bucket => "count"))
@@ -62,7 +62,7 @@ V = df1 |>
     width=400,
     height=400
   )
-save("./_assets/statistics/calls_per_hour_frequency.png", V)
+save("./_assets/statistics/calls_per_hour_frequency.svg", V)
 
 # By Hour
 df2=copy(df)
@@ -83,7 +83,7 @@ X = g1 |>
     width=400,
     height=400
   )
-save("./_assets/statistics/calls_per_hour.png", X)  
+save("./_assets/statistics/calls_per_hour.svg", X)  
 
 # By Month
 df3=copy(df)
@@ -104,4 +104,4 @@ Y = g2 |>
       width=400,
       height=400
   )
-save("./_assets/statistics/calls_per_hour_by_month.png", Y)
+save("./_assets/statistics/calls_per_hour_by_month.svg", Y)

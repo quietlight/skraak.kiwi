@@ -28,9 +28,10 @@ function get_calls_per_hour()
 end
 
 df=get_calls_per_hour()
+df=DataFrame(df)
 
 # Aggregate
-df1=DataFrame(df)
+df1=copy(df)
 
 println("Mean: ", round(mean(df1.calls), digits=2), " calls per hour")
 
@@ -46,7 +47,7 @@ W = df1 |>
     width=400,
     height=400
   )
-save("./_assets/statistics/secretary_island_calls_per_hour_aggregate.png", W)
+save("./_assets/statistics/secretary_island_calls_per_hour_aggregate.svg", W)
 
 df1.hour_bucket=map(x -> 1, df1.hour_bucket)
 rename!(df1, Dict(:hour_bucket => "count"))
@@ -61,10 +62,10 @@ V = df1 |>
     width=400,
     height=400
   )
-save("./_assets/statistics/secretary_island_calls_per_hour_frequency.png", V)
+save("./_assets/statistics/secretary_island_calls_per_hour_frequency.svg", V)
 
 # By Hour
-df2=DataFrame(df)
+df2=copy(df)
 df2.bucket = map(x -> hour(x), df2.bucket)
 df2=groupby(df2, :bucket)
 df2=combine(df2, :calls => mean, :male => mean, :female => mean, :duet => mean)
@@ -82,4 +83,4 @@ X = g1 |>
     width=200,
     height=400
   )
-save("./_assets/statistics/secretary_island_calls_per_hour.png", X)
+save("./_assets/statistics/secretary_island_calls_per_hour.svg", X)

@@ -1,6 +1,6 @@
 # This file was generated, do not modify it. # hide
 #hideall
-using CSV, DataFrames, DataFramesMeta, DuckDB, Dates, Statistics
+using CSV, DataFrames, DataFramesMeta, DuckDB, Dates, Statistics, VegaLite
 
 function get_trip_dates()
   con = DBInterface.connect(DuckDB.DB, "/Volumes/SSD1/AudioData.duckdb")
@@ -140,7 +140,8 @@ function get_location_list(td::Dates.Date)
   return a.locations
 end
 
-sxdf = DataFrame(location = String[])
+dxdf = DataFrame(location = String[]) #duet
+sxdf = DataFrame(location = String[]) #idividual
 for tdate in get_trip_dates()
   df = DataFrame(
     location = String[],
@@ -159,10 +160,23 @@ for tdate in get_trip_dates()
     "location" => copy(df.location),
     param => copy(df.individual)
     )
+  local ddf = DataFrame(
+    "location" => copy(df.location),
+    param => copy(df.duet)
+    )
   # needs to be here before the push to add total
+  global dxdf = outerjoin(dxdf, ddf, on = :location)
   global sxdf = outerjoin(sxdf, sdf, on = :location)
   push!(df, ["TOTAL", df.male |> mean |> x -> round(x, digits=4), df.female |> mean |> x -> round(x, digits=4), df.duet |> mean |> x -> round(x, digits=4), df.individual |> mean |> x -> round(x, digits=4)])
   CSV.write("./_assets/trips/tableinput/$(tdate)-cph.csv", df)
 end
 sort!(sxdf)
+sort!(dxdf)
+stack(sxdf, Not([:location]), variable_name=:trip_date, value_name=:calls_per_hour) |> 
+  @vlplot(:rect, y=:location, x="trip_date:o", color=:calls_per_hour) |>
+  x -> save("./_assets/trips/calls_per_hour_by_location_trip_date.svg", x)
+stack(dxdf, Not([:location]), variable_name=:trip_date, value_name=:duets_per_hour) |> 
+  @vlplot(:rect, y=:location, x="trip_date:o", color=:duets_per_hour) |>
+  x -> save("./_assets/trips/duets_per_hour_by_location_trip_date.svg", x)
 something.(sxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_individual_cph.csv")
+something.(dxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_duets_cph.csv")
