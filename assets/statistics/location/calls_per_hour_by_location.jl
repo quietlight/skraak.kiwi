@@ -110,8 +110,9 @@ df=graph_data()
 X = df |>
   @vlplot(
     :bar,
-    x=:location,
-    y=:mean_calls_per_hour,
+    #y=:location,
+    y={"location:o",sort="-x"},
+    x=:mean_calls_per_hour,
     color=:type,
     width=400,
     height=400,
