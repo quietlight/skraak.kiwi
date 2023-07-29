@@ -142,6 +142,9 @@ end
 
 dxdf = DataFrame(location = String[]) #duet
 sxdf = DataFrame(location = String[]) #idividual
+mxdf = DataFrame(location = String[]) #male
+fxdf = DataFrame(location = String[]) #female
+
 for tdate in get_trip_dates()
   df = DataFrame(
     location = String[],
@@ -164,19 +167,36 @@ for tdate in get_trip_dates()
     "location" => copy(df.location),
     param => copy(df.duet)
     )
+   local mdf = DataFrame(
+    "location" => copy(df.location),
+    param => copy(df.male)
+    )
+    local fdf = DataFrame(
+    "location" => copy(df.location),
+    param => copy(df.female)
+    )
   # needs to be here before the push to add total
   global dxdf = outerjoin(dxdf, ddf, on = :location)
   global sxdf = outerjoin(sxdf, sdf, on = :location)
+  global mxdf = outerjoin(mxdf, mdf, on = :location)
+  global fxdf = outerjoin(fxdf, fdf, on = :location)
   push!(df, ["TOTAL", df.male |> mean |> x -> round(x, digits=4), df.female |> mean |> x -> round(x, digits=4), df.duet |> mean |> x -> round(x, digits=4), df.individual |> mean |> x -> round(x, digits=4)])
   CSV.write("./_assets/trips/tableinput/$(tdate)-cph.csv", df)
 end
+
 sort!(sxdf)
 sort!(dxdf)
+sort!(mxdf)
+sort!(fxdf)
+
 stack(sxdf, Not([:location]), variable_name=:trip_date, value_name=:calls_per_hour) |> 
   @vlplot(:rect, y=:location, x="trip_date:o", color=:calls_per_hour) |>
   x -> save("./_assets/trips/calls_per_hour_by_location_trip_date.svg", x)
 stack(dxdf, Not([:location]), variable_name=:trip_date, value_name=:duets_per_hour) |> 
   @vlplot(:rect, y=:location, x="trip_date:o", color=:duets_per_hour) |>
   x -> save("./_assets/trips/duets_per_hour_by_location_trip_date.svg", x)
+
 something.(sxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_individual_cph.csv")
 something.(dxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_duets_cph.csv")
+something.(mxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_male_cph.csv")
+something.(fxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_female_cph.csv")
