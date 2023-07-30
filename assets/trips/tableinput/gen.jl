@@ -180,6 +180,7 @@ for tdate in get_trip_dates()
   global sxdf = outerjoin(sxdf, sdf, on = :location)
   global mxdf = outerjoin(mxdf, mdf, on = :location)
   global fxdf = outerjoin(fxdf, fdf, on = :location)
+  # add total row at bottom of call peer hour table
   push!(df, ["TOTAL", df.male |> mean |> x -> round(x, digits=4), df.female |> mean |> x -> round(x, digits=4), df.duet |> mean |> x -> round(x, digits=4), df.individual |> mean |> x -> round(x, digits=4)])
   CSV.write("./_assets/trips/tableinput/$(tdate)-cph.csv", df)
 end
@@ -196,7 +197,24 @@ stack(dxdf, Not([:location]), variable_name=:trip_date, value_name=:duets_per_ho
   @vlplot(:rect, y=:location, x="trip_date:o", color=:duets_per_hour) |>
   x -> save("./_assets/trips/duets_per_hour_by_location_trip_date.svg", x)
 
+#write tables for individual, duet, male, female
 something.(sxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_individual_cph.csv")
 something.(dxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_duets_cph.csv")
 something.(mxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_male_cph.csv")
 something.(fxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_female_cph.csv")
+
+#male slope graphs
+for col in 3:ncol(mxdf)
+  df2=mxdf[:, [1, (col-1), col]] |> dropmissing
+  df3=stack(df2, Not([:location]), variable_name=:trip_date, value_name=:calls_per_hour) #|> 
+    !isempty(df3) && df3 |> @vlplot(mark={:line,
+        strokeWidth=2}, width={step=100}, height=300, y=:calls_per_hour, x={"trip_date:o", scale={padding=0.5}}, color=:location, title="Male Calls per Hour") |> x -> save("./_assets/trips/$(levels(df3.trip_date)[end])-msg.svg", x)   
+end
+
+#female slope graphs
+for col in 3:ncol(fxdf)
+  df2=fxdf[:, [1, (col-1), col]] |> dropmissing
+  df3=stack(df2, Not([:location]), variable_name=:trip_date, value_name=:calls_per_hour) #|> 
+    !isempty(df3) && df3 |> @vlplot(mark={:line,
+        strokeWidth=2}, width={step=100}, height=300, y=:calls_per_hour, x={"trip_date:o", scale={padding=0.5}}, color=:location, title="Female Calls per Hour") |> x -> save("./_assets/trips/$(levels(df3.trip_date)[end])-fsg.svg", x)   
+end
