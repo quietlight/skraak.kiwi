@@ -203,6 +203,16 @@ something.(dxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_duets
 something.(mxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_male_cph.csv")
 something.(fxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_female_cph.csv")
 
+#drop col 2022-03-23 because only N14 serviced and svg's already generated
+#lots of locations 2022-04-27 miss out on slope graph for N14/2022-03-23
+#if you change anything in the charts I may need to regenerate 2022-03-23 svg's
+#by commenting following then build, then uncomment, build again
+#####actually nothing burger because 18 moths only just put out there
+#left the new 2022-04-27 svg's in though and reverted to normal, so may need to 
+#maintain them if I make changes
+#select!(mxdf, Not(["2022-03-23"]))
+#select!(fxdf, Not(["2022-03-23"]))
+
 #male slope graphs
 for col in 3:ncol(mxdf)
   df2=mxdf[:, [1, (col-1), col]] |> dropmissing
