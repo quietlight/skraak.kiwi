@@ -11,8 +11,8 @@ VV = VegaDatasets.VegaJSONDataset(pomona_polygon,"pomona_polygon.json")
 function get_loc_list(l::Vector{String})::Vector{NamedTuple{(:latitude, :longitude, :name), Tuple{Float64, Float64, String}}}
   con = DBInterface.connect(DuckDB.DB, "/Volumes/SSD1/AudioData.duckdb")
   a=DBInterface.execute(con, "
-    SELECT location, 
-      AVG(latitude) AS lat, 
+    SELECT location,
+      AVG(latitude) AS lat,
       AVG(longitude)  AS lon,
       FROM pomona_files,
     GROUP BY location
