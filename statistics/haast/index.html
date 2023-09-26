@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+  <link rel="stylesheet" href="/css/basic.css">
+  <link rel="icon" href="/assets/favicon.ico">
+   <title>Haast Tokoeka</title>  
+  <script defer data-domain="skraak.kiwi" src="https://plausible.io/js/plausible.js"></script>
+</head>
+<body>
+  <header>
+<div class="blog-name"><a href="/">skraak.kiwi</a></div>
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/faq">FAQ</a></li>
+    <li><a href="/statistics">Stats</a></li>
+    <li><a href="/trips">Trips</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <img src="/assets/hamburger.svg" id="menu-icon">
+</nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="haast_tokoeka"><a href="#haast_tokoeka" class="header-anchor">Haast Tokoeka</a></h1>
+<div class="franklin-toc"><ol><li><a href="#haast_tokoeka">Haast Tokoeka</a><ol><li><a href="#kiwi_calls">Kiwi Calls</a></li><li><a href="#calls_by_location">Calls by Location</a></li><li><a href="#dataset">Dataset</a></li><li><a href="#distribution">Distribution</a></li><li><a href="#time_of_day">Time of Day</a></li><li><a href="#month">Month</a></li><li><a href="#calls_per_hour_by_location">Calls per Hour by Location</a><ol><li><a href="#graph">Graph</a></li><li><a href="#table">Table</a></li></ol></li></ol></li></ol></div>
+<h2 id="kiwi_calls"><a href="#kiwi_calls" class="header-anchor">Kiwi Calls</a></h2>
+
+
+<table><tr><th align="right">Call Type</th><th align="right">Number</th></tr><tr><td align="right">Solo Male</td><td align="right">3369</td></tr><tr><td align="right">Solo Female</td><td align="right">1183</td></tr><tr><td align="right">Duets</td><td align="right">1231</td></tr><tr><td align="right">Individual</td><td align="right">7014</td></tr></table>
+
+<h2 id="calls_by_location"><a href="#calls_by_location" class="header-anchor">Calls by Location</a></h2>
+
+
+<table><tr><th align="right">Location</th><th align="right">Solo_Male</th><th align="right">Solo_Female</th><th align="right">Duets</th><th align="right">Individual</th><th align="right">False_Positives</th><th align="right">Close</th><th align="right">Low_Noise</th></tr><tr><td align="right">TF_2</td><td align="right">674</td><td align="right">233</td><td align="right">292</td><td align="right">1491</td><td align="right">1531</td><td align="right"></td><td align="right"></td></tr><tr><td align="right">TF_5</td><td align="right">679</td><td align="right">265</td><td align="right">263</td><td align="right">1470</td><td align="right">2200</td><td align="right"></td><td align="right"></td></tr><tr><td align="right">TF_6</td><td align="right">574</td><td align="right">210</td><td align="right">301</td><td align="right">1386</td><td align="right">2150</td><td align="right"></td><td align="right"></td></tr><tr><td align="right">TF_1</td><td align="right">743</td><td align="right">189</td><td align="right">223</td><td align="right">1378</td><td align="right">1465</td><td align="right"></td><td align="right"></td></tr><tr><td align="right">TF_3</td><td align="right">344</td><td align="right">143</td><td align="right">121</td><td align="right">729</td><td align="right">874</td><td align="right"></td><td align="right"></td></tr><tr><td align="right">TF_4</td><td align="right">355</td><td align="right">143</td><td align="right">31</td><td align="right">560</td><td align="right">732</td><td align="right"></td><td align="right"></td></tr><tr><td align="right">TOTAL</td><td align="right">3369</td><td align="right">1183</td><td align="right">1231</td><td align="right">7014</td><td align="right">8952</td><td align="right">0</td><td align="right">0</td></tr></table>
+
+
+<h2 id="dataset"><a href="#dataset" class="header-anchor">Dataset</a></h2>
+<pre><code class="plaintext code-output">Mean: 4.49 calls per hour
+</code></pre>
+<p><img src="/assets/statistics/haast_calls_per_hour_aggregate.svg" alt="Calls per Hour" /></p>
+<table><tr><th align="right">variable</th><th align="right">mean</th><th align="right">min</th><th align="right">median</th><th align="right">max</th></tr><tr><td align="right">calls</td><td align="right">4.490396927016645</td><td align="right">0</td><td align="right">4.0</td><td align="right">39</td></tr><tr><td align="right">male</td><td align="right">2.9449423815621</td><td align="right">0</td><td align="right">2.0</td><td align="right">26</td></tr><tr><td align="right">female</td><td align="right">1.5454545454545454</td><td align="right">0</td><td align="right">1.0</td><td align="right">13</td></tr><tr><td align="right">duet</td><td align="right">0.7880921895006402</td><td align="right">0</td><td align="right">0.0</td><td align="right">10</td></tr><tr><td align="right">hour_bucket</td><td align="right"></td><td align="right">2020-05-05T06:00:00.0</td><td align="right">2020-07-26T13:30:00.0</td><td align="right">2020-09-21T10:00:00.0</td></tr></table>
+
+<h2 id="distribution"><a href="#distribution" class="header-anchor">Distribution</a></h2>
+<p><img src="/assets/statistics/haast_calls_per_hour_frequency.svg" alt="Calls per Hour" /></p>
+<h2 id="time_of_day"><a href="#time_of_day" class="header-anchor">Time of Day</a></h2>
+<p>Hour is UTC, to get to NZ time add 12 or 13 hours.</p>
+<p><img src="/assets/statistics/haast_calls_per_hour.svg" alt="Calls per Hour" /></p>
+<h2 id="month"><a href="#month" class="header-anchor">Month</a></h2>
+<p>All calls were recorded May to September 2020.</p>
+
+<h2 id="calls_per_hour_by_location"><a href="#calls_per_hour_by_location" class="header-anchor">Calls per Hour by Location</a></h2>
+<pre><code class="plaintext code-output">Mean calls per hour by location: 0.8688
+</code></pre>
+<h3 id="graph"><a href="#graph" class="header-anchor">Graph</a></h3>
+<p><img src="/assets/statistics/haast_calls_per_hour_by_location.svg" alt="Calls per Hour" /></p>
+<h3 id="table"><a href="#table" class="header-anchor">Table</a></h3>
+<table><tr><th align="right">location</th><th align="right">male</th><th align="right">female</th><th align="right">duet</th><th align="right">individual</th></tr><tr><td align="right">TF_2</td><td align="right">0.7402</td><td align="right">0.4023</td><td align="right">0.2238</td><td align="right">1.1425</td></tr><tr><td align="right">TF_6</td><td align="right">0.6609</td><td align="right">0.386</td><td align="right">0.2273</td><td align="right">1.0469</td></tr><tr><td align="right">TF_5</td><td align="right">0.6378</td><td align="right">0.3575</td><td align="right">0.1781</td><td align="right">0.9953</td></tr><tr><td align="right">TF_1</td><td align="right">0.6576</td><td align="right">0.2805</td><td align="right">0.1518</td><td align="right">0.9381</td></tr><tr><td align="right">TF_4</td><td align="right">0.412</td><td align="right">0.1857</td><td align="right">0.0331</td><td align="right">0.5977</td></tr><tr><td align="right">TF_3</td><td align="right">0.314</td><td align="right">0.1783</td><td align="right">0.0817</td><td align="right">0.4923</td></tr><tr><td align="right">TOTAL</td><td align="right">0.5704</td><td align="right">0.2984</td><td align="right">0.1493</td><td align="right">0.8688</td></tr></table>
+
+<div class="page-foot">
+    <p><!---<a href="https://www.buymeacoffee.com/skraak">buymeacoffee.com</a></br>-->
+    Subscribe to the <a href="https://tinyletter.com/fiordlandpacks">Pomona Kiwi Newsletter</a></br>
+    Thanks to the <a  href="https://pomona-island.org.nz">Pomona Island Charitable Trust</a></br>
+    Supported by <a  href="https://fiordlandpacks.nz">Fiordland Packs</a></p>
+        
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> <a href="https://davidcary.nz">David Cary</a>. Last modified: September 26, 2023.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>
