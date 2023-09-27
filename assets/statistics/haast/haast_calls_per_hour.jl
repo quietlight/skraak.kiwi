@@ -52,7 +52,7 @@ save("./_assets/statistics/haast_calls_per_hour_aggregate.svg", W)
 df1.hour_bucket=map(x -> 1, df1.hour_bucket)
 rename!(df1, Dict(:hour_bucket => "count"))
 df1 = groupby(df1, :calls)
-df1 = combine(df1, :count => sum )
+df1 = combine(df1, :count => sum, :male => median, :female => median )
 rename!(df1, Dict(:calls => "calls_per_hour", :count_sum => "frequency"))
 V = df1 |>
   @vlplot(
@@ -63,6 +63,22 @@ V = df1 |>
     height=400
   )
 save("./_assets/statistics/haast_calls_per_hour_frequency.svg", V)
+
+df3 = select(df1, Not(:frequency))
+rename!(df3, Dict(:male_median => "male", :female_median => "female"))
+df3 = stack(df3, [:male, :female])
+rename!(df3, Dict(:variable => "type", :value => "median_calls"))
+X = df3 |>
+  @vlplot(
+    :bar,
+    x=:calls_per_hour,
+    y=:median_calls,
+    color=:type,
+    width=400,
+    height=400
+  )
+save("./_assets/statistics/haast_calls_per_hour_mf.svg", X)
+
 
 # By Hour
 df2=copy(df)
