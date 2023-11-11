@@ -26,9 +26,7 @@ function trip_stats(td::Dates.Date)
       SUM(CAST(female AS INT)) AS Solo_Female, 
       SUM(CAST(duet AS INT)) AS Duets, 
       SUM(CAST(male AS INT)) + SUM(CAST(female AS INT)) + SUM(CAST(duet AS INT)) + SUM(CAST(duet AS INT)) AS Individual,
-      SUM(CAST(not_kiwi AS INT)) AS False_Positives, 
-      SUM(CAST(close_call AS INT)) AS Close,
-      SUM(CAST(low_noise AS INT)) AS Low_Noise
+      SUM(CAST(not_kiwi AS INT)) AS False_Positives
       FROM (
       	SELECT l.*, f.file, f.location, f.trip_date
 		FROM pomona_labels_20230418 l
@@ -42,7 +40,7 @@ function trip_stats(td::Dates.Date)
   DBInterface.close!(con)
   df=DataFrame(a)
   #select!(df, Not([:file_1, :location_1]))
-  push!(df, ["TOTAL", sum(df.Solo_Male), sum(df.Solo_Female), sum(df.Duets), sum(df.Individual), sum(df.False_Positives), sum(df.Close), sum(df.Low_Noise), ])
+  push!(df, ["TOTAL", sum(df.Solo_Male), sum(df.Solo_Female), sum(df.Duets), sum(df.Individual), sum(df.False_Positives),])
   return df
 end
 
@@ -156,6 +154,7 @@ for tdate in get_trip_dates()
   	x=get_location_calls_per_hour(location, tdate)
     push!(df, x)
   end
+
   @transform!(df, @byrow :individual = (:male + :female) |> x -> round(x, digits=4))
   sort!(df, [:individual], rev=true)
   param=Dates.format(tdate, "yyyy-mm-dd")
@@ -217,14 +216,16 @@ something.(fxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_femal
 for col in 3:ncol(mxdf)
   df2=mxdf[:, [1, (col-1), col]] |> dropmissing
   df3=stack(df2, Not([:location]), variable_name=:trip_date, value_name=:calls_per_hour) #|> 
-    !isempty(df3) && df3 |> @vlplot(mark={:line,
-        strokeWidth=2}, width={step=100}, height=300, y=:calls_per_hour, x={"trip_date:o", scale={padding=0.5}}, color=:location, title="Male Calls per Hour") |> x -> save("./_assets/trips/$(levels(df3.trip_date)[end])-msg.svg", x)   
+  !isempty(df3) && df3 |> 
+  @vlplot(mark={:line, strokeWidth=2}, width={step=100}, height=300, y=:calls_per_hour, x={"trip_date:o", scale={padding=0.5}}, color=:location, title="Male Calls per Hour") |> 
+  x -> save("./_assets/trips/$(levels(df3.trip_date)[end])-msg.svg", x) 
 end
 
 #female slope graphs
 for col in 3:ncol(fxdf)
   df2=fxdf[:, [1, (col-1), col]] |> dropmissing
   df3=stack(df2, Not([:location]), variable_name=:trip_date, value_name=:calls_per_hour) #|> 
-    !isempty(df3) && df3 |> @vlplot(mark={:line,
-        strokeWidth=2}, width={step=100}, height=300, y=:calls_per_hour, x={"trip_date:o", scale={padding=0.5}}, color=:location, title="Female Calls per Hour") |> x -> save("./_assets/trips/$(levels(df3.trip_date)[end])-fsg.svg", x)   
+  !isempty(df3) && df3 |> 
+  @vlplot(mark={:line, strokeWidth=2}, width={step=100}, height=300, y=:calls_per_hour, x={"trip_date:o", scale={padding=0.5}}, color=:location, title="Female Calls per Hour") |> 
+  x -> save("./_assets/trips/$(levels(df3.trip_date)[end])-fsg.svg", x)   
 end

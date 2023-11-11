@@ -22,8 +22,6 @@ total = 2*duets + male + female
 male_percent = round(((male + duets) / total * 100); digits=2)
 female_percent = round(((female + duets) / total * 100); digits=2)
 
-@info duets
-
 table = DataFrame("" => ["Male", "Female"],
                  "Number" => [(male + duets), (female + duets)],
                  "Percent" => [male_percent, female_percent])

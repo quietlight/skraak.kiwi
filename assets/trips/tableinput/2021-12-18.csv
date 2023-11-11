@@ -1,5 +1,5 @@
-Location,Solo_Male,Solo_Female,Duets,Individual,False_Positives,Close,Low_Noise
-C05,92,11,25,153,20,25,45
-N14,23,7,5,40,47,1,11
-WD07,16,0,1,18,18,2,7
-TOTAL,131,18,31,211,85,28,63
+Location,Solo_Male,Solo_Female,Duets,Individual,False_Positives
+C05,92,11,25,153,20
+N14,23,7,5,40,47
+WD07,16,0,1,18,18
+TOTAL,131,18,31,211,85

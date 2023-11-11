@@ -1,5 +1,5 @@
-Location,Solo_Male,Solo_Female,Duets,Individual,False_Positives,Close,Low_Noise
-C05,97,5,22,146,9,18,55
-M02,28,13,6,53,48,7,15
-CB11,25,2,0,27,9,6,15
-TOTAL,150,20,28,226,66,31,85
+Location,Solo_Male,Solo_Female,Duets,Individual,False_Positives
+C05,97,5,22,146,9
+M02,28,13,6,53,48
+CB11,25,2,0,27,9
+TOTAL,150,20,28,226,66

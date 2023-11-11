@@ -1,0 +1,1 @@
+DuckDB.ConnectionException("IO Error: Corrupt database file: computed checksum 5381 does not match stored checksum 0 in block")

@@ -120,5 +120,4 @@ X = df |>
     height=400,
   )
 
-  
 save("./_assets/statistics/calls_per_hour_by_temperature.svg", X)

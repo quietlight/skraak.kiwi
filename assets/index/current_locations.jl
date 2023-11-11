@@ -30,18 +30,11 @@ function get_loc_list(l::Vector{String})::Vector{NamedTuple{(:latitude, :longitu
 end
 
 # List of locations, known by db already.
-moths=get_loc_list(["C05", "D03", "D09", "F09", "G05", "H04", "M04", "N14", "N20", "NB14", "A11", "H09", "CB11", "S13T", "N08M"])
+moths=get_loc_list(["C05", "D03", "D09", "F09", "G05", "H04", "M04", "N14", "N20", "NB14"])
 
 # The db only knows location of already used spots, add new locations manually.
 # new_moths=[(latitude=-45.50075, longitude=167.48065, name="N10M")]
-new_moths=[
-    (latitude=-45.51609, longitude=167.4715, name="W20"),
-    (latitude=-45.51419, longitude=167.46801, name="J06"),
-    (latitude=-45.51053, longitude=167.47281, name="S23"),
-    (latitude=-45.50292, longitude=167.46212, name="W04"),
-    (latitude=-45.50127, longitude=167.46917, name="V04")
-    ]
-
+new_moths=[]
 
 X=@vlplot(width=455, height=500) +
 @vlplot(
@@ -64,7 +57,7 @@ X=@vlplot(width=455, height=500) +
     latitude="latitude:q",
     size={value=100},
     color={value=:brown}
-)+
+)#=+
 @vlplot(
     :circle,
     data=new_moths,
@@ -72,11 +65,11 @@ X=@vlplot(width=455, height=500) +
     latitude="latitude:q",
     size={value=100},
     color={value=:brown}
-)
+)=#
 
 
-#save("current_locations.png", X)
-save(joinpath(@OUTPUT, "current_locations.png"), X)
+#save(joinpath(@OUTPUT, "current_locations.png"), X)
+save("./_assets/index/current_locations.svg", X)
 
 #for item in vcat(moths, new_moths)
 for item in vcat(moths)

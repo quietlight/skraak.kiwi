@@ -24,7 +24,6 @@ function get_loc_list()
   df = innerjoin(df1, df2, on = :location)
   gdf = groupby(df, :colour)
 
-
   red = NamedTuple{(:latitude, :longitude, :name), Tuple{Float64, Float64, String}}[]
   orange = NamedTuple{(:latitude, :longitude, :name), Tuple{Float64, Float64, String}}[]
   blue = NamedTuple{(:latitude, :longitude, :name), Tuple{Float64, Float64, String}}[]

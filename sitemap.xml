@@ -3,13 +3,13 @@
 
 <url>
     <loc>https://skraak.kiwi/statistics/location/index.html</loc>
-    <lastmod>2023-09-25</lastmod>
+    <lastmod>2023-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://skraak.kiwi/statistics/moon/index.html</loc>
-    <lastmod>2023-09-25</lastmod>
+    <lastmod>2023-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -21,7 +21,7 @@
 </url>
 <url>
     <loc>https://skraak.kiwi/trips/index.html</loc>
-    <lastmod>2023-09-25</lastmod>
+    <lastmod>2023-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -87,7 +87,7 @@
 </url>
 <url>
     <loc>https://skraak.kiwi/statistics/weather/index.html</loc>
-    <lastmod>2023-09-25</lastmod>
+    <lastmod>2023-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -111,13 +111,13 @@
 </url>
 <url>
     <loc>https://skraak.kiwi/index.html</loc>
-    <lastmod>2023-09-25</lastmod>
+    <lastmod>2023-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://skraak.kiwi/statistics/overview/index.html</loc>
-    <lastmod>2023-09-25</lastmod>
+    <lastmod>2023-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -189,13 +189,25 @@
 </url>
 <url>
     <loc>https://skraak.kiwi/statistics/gender/index.html</loc>
-    <lastmod>2023-09-25</lastmod>
+    <lastmod>2023-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2023-11-02/index.html</loc>
+    <lastmod>2023-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://skraak.kiwi/statistics/rats/index.html</loc>
     <lastmod>2023-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2023-10-19/index.html</loc>
+    <lastmod>2023-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
