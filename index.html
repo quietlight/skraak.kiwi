@@ -29,9 +29,9 @@
 
 
 <!-- Content appended here -->
-<div class="franklin-content"><h1></h1>
+<div class="franklin-content"><p>##test commit</p>
 <h1 id="pomona_audio_project"><a href="#pomona_audio_project" class="header-anchor">Pomona Audio Project</a></h1>
-<p><div class="franklin-toc"><ol><li><a href="#pomona_audio_project">Pomona Audio Project</a><ol><li><a href="#introduction">Introduction</a></li><li><a href="#haast_tokoeka_are_endangered">Haast Tokoeka Are Endangered</a></li><li><a href="#current_locations">Current Locations</a></li><li><a href="#past_locations">Past Locations</a></li><li><a href="#workflow">Workflow</a></li></ol></li><li><a href="#skraak_forest_project">Skraak Forest Project</a></li><li><a href="#next">Next</a></li></ol></div> </p>
+<p><div class="franklin-toc"><ol><li><a href="#pomona_audio_project">Pomona Audio Project</a><ol><li><a href="#introduction">Introduction</a></li><li><a href="#haast_tokoeka_are_endangered">Haast Tokoeka Are Endangered</a></li><li><a href="#current_locations">Current Locations</a></li><li><a href="#past_locations">Past Locations</a></li><li><a href="#workflow">Workflow</a></li></ol></li><li><a href="#skraak_forest_project">Skraak Forest Project</a></li><li><a href="#use_skraak_to_train_and_run_your_own_model">Use Skraak to Train and Run Your Own Model</a></li><li><a href="#next">Next</a></li></ol></div> </p>
 <h2 id="introduction"><a href="#introduction" class="header-anchor">Introduction</a></h2>
 <p>Night time audio data is recorded on Pomona Island with up to 18 Audio Moths. Haast Kiwi calls are found and monitored.</p>
 <p><img src="https://res.cloudinary.com/dofwwje6q/image/upload/w_400/v1647156108/Pomona/21D9D0DD-B925-4F46-B952-8FDF436E1FE2_nfqpv6.jpg" alt="Moth in anti-static bag" /></p>
@@ -70,6 +70,12 @@
 <li><p>5 more planned in the lower Hollyford, unfortunately I have run out of moths for now. Thanks to The Hollyford Conservation Trust.</p>
 </li>
 </ul></div>
+<h1 id="use_skraak_to_train_and_run_your_own_model"><a href="#use_skraak_to_train_and_run_your_own_model" class="header-anchor">Use Skraak to Train and Run Your Own Model</a></h1>
+<p>Use skraak code written in julia, to train your own models. </p>
+<p>Search for bird calls in raw audio.</p>
+<p><a href="https://github.com/quietlight/Skraak/">Skraak on Github</a></p>
+<p><a href="/contact/">Contact</a> me if you would like a copy of the Skraak Haast Tokoeka model. It is trained on 7.7 million 5 second clips from night time and day time. It may be useful as a base from which to fine tune your model as it knows a lot about environemntal noise and calls that are not kiwi.</p>
+<p>&#40;Note: An Nvidia &#40;CUDA&#41; GPU is required to do anything useful. This code will work ok on CPU, but inference is slow without a GPU. You may be able to adapt this code to run on an AMD or Mac GPU.&#41;</p>
 <h1 id="next"><a href="#next" class="header-anchor">Next</a></h1>
 <ul>
 <li><p><a href="/faq">Frequently Asked Questions</a></p>
@@ -83,13 +89,13 @@
 </ul>
 <div class="page-foot">
     <p><!---<a href="https://www.buymeacoffee.com/skraak">buymeacoffee.com</a></br>-->
-    Subscribe to the <a href="https://tinyletter.com/fiordlandpacks">Pomona Kiwi Newsletter</a></br>
-    Thanks to the <a  href="https://pomona-island.org.nz">Pomona Island Charitable Trust</a></br>
-    Supported by <a  href="https://fiordlandpacks.nz">Fiordland Packs</a></p>
-        
-    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> <a href="https://davidcary.nz">David Cary</a>. Last modified: November 11, 2023.
-</div>
-</div><!-- CONTENT ENDS HERE -->
+        Subscribe to the <a href="https://tinyletter.com/fiordlandpacks">Pomona Kiwi Newsletter</a></br>
+        Skraak on <a href="https://github.com/quietlight/Skraak">Github</a></br>
+        Thanks to the <a href="https://pomona-island.org.nz">Pomona Island Charitable Trust</a></br>
+        Supported by <a href="https://fiordlandpacks.nz">Fiordland Packs</a></p>
+
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> <a href="https://davidcary.nz">David Cary</a>. Last modified: December 10, 2023.
+</div></div><!-- CONTENT ENDS HERE -->
     
     
         <script src="/libs/highlight/highlight.min.js"></script>

@@ -2,38 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-    <loc>https://skraak.kiwi/statistics/location/index.html</loc>
-    <lastmod>2023-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/statistics/moon/index.html</loc>
-    <lastmod>2023-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2022-12-17/index.html</loc>
-    <lastmod>2023-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/index.html</loc>
-    <lastmod>2023-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2023-07-22/index.html</loc>
-    <lastmod>2023-07-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2021-11-25/index.html</loc>
-    <lastmod>2023-07-29</lastmod>
+    <loc>https://skraak.kiwi/trips/2022-03-23/index.html</loc>
+    <lastmod>2023-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -44,86 +14,8 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://skraak.kiwi/trips/2023-02-17/index.html</loc>
-    <lastmod>2023-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2023-06-22/index.html</loc>
-    <lastmod>2023-07-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/statistics/index.html</loc>
-    <lastmod>2023-09-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2022-05-27/index.html</loc>
-    <lastmod>2023-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2023-09-11/index.html</loc>
-    <lastmod>2023-09-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2022-10-08/index.html</loc>
-    <lastmod>2023-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2021-12-18/index.html</loc>
-    <lastmod>2023-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/statistics/weather/index.html</loc>
-    <lastmod>2023-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/faq/index.html</loc>
-    <lastmod>2023-07-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2023-06-10/index.html</loc>
-    <lastmod>2023-07-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2022-01-17/index.html</loc>
-    <lastmod>2023-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
     <loc>https://skraak.kiwi/index.html</loc>
-    <lastmod>2023-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/statistics/overview/index.html</loc>
-    <lastmod>2023-11-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/statistics/secretary-island/index.html</loc>
-    <lastmod>2023-09-27</lastmod>
+    <lastmod>2023-12-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -134,49 +26,7 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://skraak.kiwi/trips/2021-10-28/index.html</loc>
-    <lastmod>2023-07-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2022-08-27/index.html</loc>
-    <lastmod>2023-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/statistics/when/index.html</loc>
-    <lastmod>2023-07-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/contact/index.html</loc>
-    <lastmod>2023-04-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2022-02-25/index.html</loc>
-    <lastmod>2023-07-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2022-03-23/index.html</loc>
-    <lastmod>2023-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2023-04-15/index.html</loc>
-    <lastmod>2023-07-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://skraak.kiwi/trips/2022-02-12/index.html</loc>
+    <loc>https://skraak.kiwi/trips/2022-01-17/index.html</loc>
     <lastmod>2023-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -188,20 +38,20 @@
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://skraak.kiwi/statistics/gender/index.html</loc>
-    <lastmod>2023-11-11</lastmod>
+    <loc>https://skraak.kiwi/trips/2022-08-27/index.html</loc>
+    <lastmod>2023-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://skraak.kiwi/trips/2023-11-02/index.html</loc>
-    <lastmod>2023-11-11</lastmod>
+    <loc>https://skraak.kiwi/trips/2023-02-17/index.html</loc>
+    <lastmod>2023-07-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://skraak.kiwi/statistics/rats/index.html</loc>
-    <lastmod>2023-07-30</lastmod>
+    <loc>https://skraak.kiwi/trips/index.html</loc>
+    <lastmod>2023-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -212,7 +62,37 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>https://skraak.kiwi/trips/2022-05-27/index.html</loc>
+    <lastmod>2023-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>https://skraak.kiwi/trips/2021-11-13/index.html</loc>
+    <lastmod>2023-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/contact/index.html</loc>
+    <lastmod>2023-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2023-04-15/index.html</loc>
+    <lastmod>2023-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/statistics/gender/index.html</loc>
+    <lastmod>2023-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2022-02-25/index.html</loc>
     <lastmod>2023-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -220,6 +100,126 @@
 <url>
     <loc>https://skraak.kiwi/statistics/haast/index.html</loc>
     <lastmod>2023-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/statistics/moon/index.html</loc>
+    <lastmod>2023-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/statistics/weather/index.html</loc>
+    <lastmod>2023-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2021-12-18/index.html</loc>
+    <lastmod>2023-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2023-11-02/index.html</loc>
+    <lastmod>2023-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/statistics/secretary-island/index.html</loc>
+    <lastmod>2023-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2021-11-25/index.html</loc>
+    <lastmod>2023-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/statistics/when/index.html</loc>
+    <lastmod>2023-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2022-02-12/index.html</loc>
+    <lastmod>2023-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2023-06-22/index.html</loc>
+    <lastmod>2023-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2023-07-22/index.html</loc>
+    <lastmod>2023-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2022-10-08/index.html</loc>
+    <lastmod>2023-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2023-09-11/index.html</loc>
+    <lastmod>2023-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/statistics/index.html</loc>
+    <lastmod>2023-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2023-06-10/index.html</loc>
+    <lastmod>2023-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/statistics/overview/index.html</loc>
+    <lastmod>2023-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2021-10-28/index.html</loc>
+    <lastmod>2023-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/statistics/location/index.html</loc>
+    <lastmod>2023-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/trips/2022-12-17/index.html</loc>
+    <lastmod>2023-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/faq/index.html</loc>
+    <lastmod>2023-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://skraak.kiwi/statistics/rats/index.html</loc>
+    <lastmod>2023-07-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
