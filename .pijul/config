@@ -1,0 +1,8 @@
+default_remote = "nest"
+
+[hooks]
+record = []
+
+[[remotes]]
+name = "nest"
+ssh = "quietlight@nest.pijul.com:quietlight/skraak.kiwi"

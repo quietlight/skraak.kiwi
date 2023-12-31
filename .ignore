@@ -1,0 +1,5 @@
+.git
+.DS_Store
+__site/
+node_modules/
+package-lock.json
