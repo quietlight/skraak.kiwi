@@ -8,5 +8,5 @@ __Headers__
 
 Needs to be linked in to trips.md page.
 
-[Subscribe](https://tinyletter.com/fiordlandpacks) to newsletter.
+
 @@
