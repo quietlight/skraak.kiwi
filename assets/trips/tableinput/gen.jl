@@ -9,7 +9,7 @@ function get_trip_dates()
 	FROM pomona_labels_20230418 l
 	LEFT JOIN pomona_files f
 	ON l.file = f.file AND l.location = f.location
-	; 
+	;
   ")
   DBInterface.close!(con)
   df=DataFrame(a)
@@ -21,10 +21,10 @@ end
 function trip_stats(td::Dates.Date)
   con = DBInterface.connect(DuckDB.DB, "/Volumes/SSD1/AudioData.duckdb")
   a=DBInterface.execute(con, "
-  	SELECT location AS Location, 
-      SUM(CAST(male AS INT)) AS Solo_Male, 
-      SUM(CAST(female AS INT)) AS Solo_Female, 
-      SUM(CAST(duet AS INT)) AS Duets, 
+  	SELECT location AS Location,
+      SUM(CAST(male AS INT)) AS Solo_Male,
+      SUM(CAST(female AS INT)) AS Solo_Female,
+      SUM(CAST(duet AS INT)) AS Duets,
       SUM(CAST(male AS INT)) + SUM(CAST(female AS INT)) + SUM(CAST(duet AS INT)) + SUM(CAST(duet AS INT)) AS Individual,
       SUM(CAST(not_kiwi AS INT)) AS False_Positives
       FROM (
@@ -35,7 +35,7 @@ function trip_stats(td::Dates.Date)
 		WHERE f.trip_date = (DATE '$td')
       	)
       GROUP BY location
-      ORDER BY Individual DESC; 
+      ORDER BY Individual DESC;
   ")
   DBInterface.close!(con)
   df=DataFrame(a)
@@ -68,8 +68,8 @@ function get_calls_with_location_trip_date(loc::String, td::Dates.Date)
   WHERE
     location = '$loc';
   ")
-  DBInterface.close!(con) 
-  a=DataFrame(a) 
+  DBInterface.close!(con)
+  a=DataFrame(a)
   return a
 end
 
@@ -83,9 +83,9 @@ function get_files_with_location_trip_date(loc::String, td::Dates.Date)
   FROM
     pomona_files
   WHERE
-    location = '$loc' AND trip_date = (DATE '$td'); 
+    location = '$loc' AND trip_date = (DATE '$td');
   ")
-  DBInterface.close!(con) 
+  DBInterface.close!(con)
   a=DataFrame(a)
   b=filter(row -> row.night = true, a)
   select!(b, Not([:night]))
@@ -118,7 +118,7 @@ function get_location_list(td::Dates.Date)
     SELECT
       l.location AS locations,
       SUM(CAST(l.male AS INT)) + SUM(CAST(l.female AS INT)) + SUM(CAST(l.duet AS INT)) + SUM(CAST(l.duet AS INT)) AS calls,
-    FROM 
+    FROM
       (
       	SELECT m.*, n.file, n.location, n.trip_date
 		FROM pomona_labels_20230418 m
@@ -126,7 +126,7 @@ function get_location_list(td::Dates.Date)
 		ON m.file = n.file AND m.location = n.location
 		WHERE n.trip_date = (DATE '$td')
       	) AS l
-    WHERE 
+    WHERE
       l.male = true OR l.female = true OR l.duet = true
     GROUP BY
       l.location
@@ -189,10 +189,10 @@ sort!(dxdf)
 sort!(mxdf)
 sort!(fxdf)
 
-stack(sxdf, Not([:location]), variable_name=:trip_date, value_name=:calls_per_hour) |> 
+stack(sxdf, Not([:location]), variable_name=:trip_date, value_name=:calls_per_hour) |>
   @vlplot(:rect, y=:location, x="trip_date:o", color=:calls_per_hour) |>
   x -> save("./_assets/trips/calls_per_hour_by_location_trip_date.svg", x)
-stack(dxdf, Not([:location]), variable_name=:trip_date, value_name=:duets_per_hour) |> 
+stack(dxdf, Not([:location]), variable_name=:trip_date, value_name=:duets_per_hour) |>
   @vlplot(:rect, y=:location, x="trip_date:o", color=:duets_per_hour) |>
   x -> save("./_assets/trips/duets_per_hour_by_location_trip_date.svg", x)
 
@@ -207,7 +207,7 @@ something.(fxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_femal
 #if you change anything in the charts I may need to regenerate 2022-03-23 svg's
 #by commenting following then build, then uncomment, build again
 #####actually nothing burger because 18 moths only just put out there
-#left the new 2022-04-27 svg's in though and reverted to normal, so may need to 
+#left the new 2022-04-27 svg's in though and reverted to normal, so may need to
 #maintain them if I make changes
 #select!(mxdf, Not(["2022-03-23"]))
 #select!(fxdf, Not(["2022-03-23"]))
@@ -215,17 +215,17 @@ something.(fxdf, missing) |> CSV.write("./_assets/trips/tableinput/summary_femal
 #male slope graphs
 for col in 3:ncol(mxdf)
   df2=mxdf[:, [1, (col-1), col]] |> dropmissing
-  df3=stack(df2, Not([:location]), variable_name=:trip_date, value_name=:calls_per_hour) #|> 
-  !isempty(df3) && df3 |> 
-  @vlplot(mark={:line, strokeWidth=2}, width={step=100}, height=300, y=:calls_per_hour, x={"trip_date:o", scale={padding=0.5}}, color=:location, title="Male Calls per Hour") |> 
-  x -> save("./_assets/trips/$(levels(df3.trip_date)[end])-msg.svg", x) 
+  df3=stack(df2, Not([:location]), variable_name=:trip_date, value_name=:calls_per_hour) #|>
+  !isempty(df3) && df3 |>
+  @vlplot(mark={:line, strokeWidth=2}, width={step=100}, height=300, y=:calls_per_hour, x={"trip_date:o", scale={padding=0.5}}, color=:location, title="Male Calls per Hour") |>
+  x -> save("./_assets/trips/$(levels(df3.trip_date)[end])-msg.svg", x)
 end
 
 #female slope graphs
 for col in 3:ncol(fxdf)
   df2=fxdf[:, [1, (col-1), col]] |> dropmissing
-  df3=stack(df2, Not([:location]), variable_name=:trip_date, value_name=:calls_per_hour) #|> 
-  !isempty(df3) && df3 |> 
-  @vlplot(mark={:line, strokeWidth=2}, width={step=100}, height=300, y=:calls_per_hour, x={"trip_date:o", scale={padding=0.5}}, color=:location, title="Female Calls per Hour") |> 
-  x -> save("./_assets/trips/$(levels(df3.trip_date)[end])-fsg.svg", x)   
+  df3=stack(df2, Not([:location]), variable_name=:trip_date, value_name=:calls_per_hour) #|>
+  !isempty(df3) && df3 |>
+  @vlplot(mark={:line, strokeWidth=2}, width={step=100}, height=300, y=:calls_per_hour, x={"trip_date:o", scale={padding=0.5}}, color=:location, title="Female Calls per Hour") |>
+  x -> save("./_assets/trips/$(levels(df3.trip_date)[end])-fsg.svg", x)
 end
