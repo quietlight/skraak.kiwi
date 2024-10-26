@@ -15,7 +15,7 @@
 </url>
 <url>
     <loc>https://skraak.kiwi/index.html</loc>
-    <lastmod>2024-05-29</lastmod>
+    <lastmod>2024-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -51,7 +51,7 @@
 </url>
 <url>
     <loc>https://skraak.kiwi/trips/index.html</loc>
-    <lastmod>2024-07-10</lastmod>
+    <lastmod>2024-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -146,6 +146,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>https://skraak.kiwi/trips/2024-10-18/index.html</loc>
+    <lastmod>2024-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>https://skraak.kiwi/trips/2021-11-25/index.html</loc>
     <lastmod>2023-07-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -207,7 +213,7 @@
 </url>
 <url>
     <loc>https://skraak.kiwi/statistics/overview/index.html</loc>
-    <lastmod>2024-06-03</lastmod>
+    <lastmod>2024-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>

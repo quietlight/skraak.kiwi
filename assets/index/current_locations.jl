@@ -30,7 +30,7 @@ function get_loc_list(l::Vector{String})::Vector{NamedTuple{(:latitude, :longitu
 end
 
 # List of locations, known by db already.
-moths=get_loc_list(["C05", "D03", "D09", "F09", "G05", "H04", "M04", "N14", "N20", "NB14"])
+moths=get_loc_list(["A05", "C05", "D03", "D09", "F09", "G05", "H04", "M04", "N14", "N20"])
 
 # The db only knows location of already used spots, add new locations manually.
 # new_moths=[(latitude=-45.50075, longitude=167.48065, name="N10M")]
