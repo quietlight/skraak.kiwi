@@ -126,8 +126,8 @@ function hour_graph(df)
   return tdf
 end
 
-println(hour_graph(copy(df)))
-println(month_graph(copy(df)))
+# println(hour_graph(copy(df)))
+# println(month_graph(copy(df)))
 
 X = hour_graph(copy(df)) |>
   @vlplot(
